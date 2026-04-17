@@ -2,7 +2,7 @@
 
 Este proyecto implementa una arquitectura de microservicios basada en Spring Boot con integración con servicios de AWS. El sistema está diseñado para proporcionar autenticación, gestión de archivos y una puerta de enlace API unificada.
 
-## 🏗️ Arquitectura
+##  Arquitectura
 
 El proyecto consta de tres microservicios principales:
 
@@ -48,7 +48,7 @@ El proyecto consta de tres microservicios principales:
 - **Maven**: Para gestión de dependencias
 - **Lombok**: Para reducir código repetitivo
 
-## 📁 Estructura del Proyecto
+##  Estructura del Proyecto
 
 ```
 proyecto-microservicios-aws/
@@ -142,7 +142,7 @@ Cada microservicio requiere configuración específica:
 - Configurar CI/CD pipeline
 - Implementar rate limiting en el API Gateway
 
-## 🤝 Contribución
+##  Contribución
 
 Este proyecto sigue las mejores prácticas de desarrollo de microservicios y está diseñado para ser escalable y mantenible.
 
