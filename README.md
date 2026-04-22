@@ -105,7 +105,7 @@ proyecto-microservicios-aws/
 └── README.md
 ```
 
-## 🚀 Configuración y Despliegue
+##  Configuración y Despliegue
 
 ### Prerrequisitos
 - Java 17 o superior
@@ -133,7 +133,7 @@ Cada microservicio requiere configuración específica:
 #### API Gateway
 - `JWT_SECRET`: Clave secreta para validación de JWT (debe coincidir con auth-microservice)
 
-## 🔄 Próximos Pasos
+## Próximos Pasos
 
 - Implementar circuit breaker con Resilience4j
 - Agregar monitoring con Prometheus y Grafana
