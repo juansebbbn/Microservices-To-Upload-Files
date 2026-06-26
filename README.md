@@ -1,57 +1,78 @@
-# Proyecto de Microservicios + AWS
+# AWS Microservices Project
 
-Este proyecto implementa una arquitectura de microservicios basada en Spring Boot con integración con servicios de AWS. El sistema está diseñado para proporcionar autenticación, gestión de archivos y una puerta de enlace API unificada.
+A microservices-based architecture built with Spring Boot and integrated with AWS services. The system provides authentication, file management, and a unified API Gateway for client requests.
 
-##  Arquitectura
+## Architecture
 
-El proyecto consta de tres microservicios principales:
+The project consists of three main microservices:
 
-### 1. API Gateway (Puerto 8080)
-- **Tecnología**: Spring Cloud Gateway
-- **Función**: Punto de entrada único para todas las solicitudes del cliente
-- **Características**:
-  - Enrutamiento dinámico a microservicios
-  - Autenticación y autorización centralizada con JWT
-  - Filtros personalizados para validación de tokens
-  - Health checks integrados
+### 1. API Gateway (Port 8080)
 
-### 2. Auth Microservice (Puerto 8081)
-- **Tecnología**: Spring Boot con Spring Security
-- **Función**: Gestión de autenticación y autorización
-- **Características**:
-  - Registro y autenticación de usuarios
-  - Generación y validación de tokens JWT
-  - Persistencia con JPA y MySQL
-  - Roles y permisos configurables
-  - Endpoints RESTful para operaciones de autenticación
+**Technology:** Spring Cloud Gateway
+
+**Purpose:** Single entry point for all client requests.
+
+#### Features
+
+* Dynamic routing to microservices
+* Centralized JWT authentication and authorization
+* Custom filters for token validation
+* Built-in health checks
+
+---
+
+### 2. Auth Microservice (Port 8081)
+
+**Technology:** Spring Boot + Spring Security
+
+**Purpose:** Authentication and authorization management.
+
+#### Features
+
+* User registration and authentication
+* JWT generation and validation
+* Data persistence with JPA and MySQL
+* Configurable roles and permissions
+* RESTful endpoints for authentication operations
+
+---
 
 ### 3. S3 Microservice
-- **Tecnología**: Spring Boot con AWS SDK
-- **Función**: Gestión de almacenamiento de archivos en AWS S3
-- **Características**:
-  - Subida de archivos
-  - Integración nativa con Amazon S3
-  - Manejo de excepciones personalizado
-  - Validación de archivos
 
-## 🛠️ Stack Tecnológico
+**Technology:** Spring Boot + AWS SDK
 
-- **Java**: 17
-- **Spring Boot**: 3.2.4 / 4.0.3
-- **Spring Cloud**: 2023.0.0
-- **Spring Security**: Para autenticación y autorización
-- **Spring Data JPA**: Para persistencia de datos
-- **MySQL**: Base de datos relacional
-- **AWS SDK**: Para integración con servicios de Amazon
-- **JWT**: Para tokens de autenticación
-- **Docker**: Para contenerización
-- **Maven**: Para gestión de dependencias
-- **Lombok**: Para reducir código repetitivo
+**Purpose:** File storage management using Amazon S3.
 
-##  Estructura del Proyecto
+#### Features
 
-```
-proyecto-microservicios-aws/
+* File upload functionality
+* Native Amazon S3 integration
+* Custom exception handling
+* File validation
+
+---
+
+## Technology Stack
+
+* **Java 17**
+* **Spring Boot 3.2.4 / 4.0.3**
+* **Spring Cloud 2023.0.0**
+* **Spring Security**
+* **Spring Data JPA**
+* **MySQL**
+* **AWS SDK**
+* **JWT (JSON Web Token)**
+* **Docker**
+* **Maven**
+* **Lombok**
+
+---
+
+## Project Structure
+
+```text
+project-microservices-aws/
+
 ├── api-gateway/
 │   ├── src/main/java/com/juan/apigateway/
 │   │   ├── ApiGatewayApplication.java
@@ -63,6 +84,7 @@ proyecto-microservicios-aws/
 │   │       └── JwtUtils.java
 │   ├── Dockerfile
 │   └── pom.xml
+
 ├── auth-microservice/
 │   ├── src/main/java/com/juan/authmicroservice/
 │   │   ├── AuthMicroserviceApplication.java
@@ -86,6 +108,7 @@ proyecto-microservicios-aws/
 │   │       └── JwtService.java
 │   ├── Dockerfile
 │   └── pom.xml
+
 ├── s3-microservice/
 │   ├── src/main/java/com/juan/s3microservice/
 │   │   ├── S3MicroserviceApplication.java
@@ -102,52 +125,80 @@ proyecto-microservicios-aws/
 │   │       └── StorageService.java
 │   ├── Dockerfile
 │   └── pom.xml
+
 └── README.md
 ```
 
-##  Configuración y Despliegue
+---
 
-### Prerrequisitos
-- Java 17 o superior
-- Maven 3.6+
-- Docker y Docker Compose
-- Cuenta de AWS con Aurora configurado
-- Cuenta de AWS con S3 configurado
+## Setup and Deployment
 
-### Variables de Entorno
+### Prerequisites
 
-Cada microservicio requiere configuración específica:
-
-#### Auth Microservice
-- `SPRING_DATASOURCE_URL`: URL de conexión a MySQL
-- `SPRING_DATASOURCE_USERNAME`: Usuario de base de datos
-- `SPRING_DATASOURCE_PASSWORD`: Contraseña de base de datos
-- `JWT_SECRET`: Clave secreta para JWT
-
-#### S3 Microservice
-- `AWS_ACCESS_KEY_ID`: Access key de AWS
-- `AWS_SECRET_ACCESS_KEY`: Secret key de AWS
-- `AWS_REGION`: Región de AWS
-- `S3_BUCKET_NAME`: Nombre del bucket S3
-
-#### API Gateway
-- `JWT_SECRET`: Clave secreta para validación de JWT (debe coincidir con auth-microservice)
-
-## Próximos Pasos
-
-- Implementar circuit breaker con Resilience4j
-- Agregar monitoring con Prometheus y Grafana
-- Implementar logging centralizado con ELK Stack
-- Agregar tests de integración automatizados
-- Configurar CI/CD pipeline
-- Implementar rate limiting en el API Gateway
-
-##  Contribución
-
-Este proyecto sigue las mejores prácticas de desarrollo de microservicios y está diseñado para ser escalable y mantenible.
+* Java 17 or higher
+* Maven 3.6+
+* Docker and Docker Compose
+* AWS Account with Aurora configured
+* AWS Account with S3 configured
 
 ---
 
-**Autor**: Juan  
-**Versión**: 1.0.0  
-**Última actualización**: 2026
+## Environment Variables
+
+Each microservice requires specific configuration:
+
+### Auth Microservice
+
+| Variable                     | Description                        |
+| ---------------------------- | ---------------------------------- |
+| `SPRING_DATASOURCE_URL`      | Database connection URL            |
+| `SPRING_DATASOURCE_USERNAME` | Database username                  |
+| `SPRING_DATASOURCE_PASSWORD` | Database password                  |
+| `JWT_SECRET`                 | Secret key used for JWT generation |
+
+### S3 Microservice
+
+| Variable                | Description    |
+| ----------------------- | -------------- |
+| `AWS_ACCESS_KEY_ID`     | AWS Access Key |
+| `AWS_SECRET_ACCESS_KEY` | AWS Secret Key |
+| `AWS_REGION`            | AWS Region     |
+| `S3_BUCKET_NAME`        | S3 Bucket Name |
+
+### API Gateway
+
+| Variable     | Description                                                                      |
+| ------------ | -------------------------------------------------------------------------------- |
+| `JWT_SECRET` | Secret key used to validate JWT tokens (must match the Auth Microservice secret) |
+
+---
+
+## Future Improvements
+
+* Implement Circuit Breaker with Resilience4j
+* Add monitoring using Prometheus and Grafana
+* Implement centralized logging with ELK Stack
+* Add automated integration tests
+* Configure CI/CD pipelines
+* Implement rate limiting in the API Gateway
+
+---
+
+## Contributing
+
+This project follows microservices best practices and is designed to be scalable, maintainable, and cloud-ready.
+
+---
+
+## Author
+
+**Juan**
+
+## Version
+
+**1.0.0**
+
+## Last Updated
+
+**2026**
+
